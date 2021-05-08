@@ -2,30 +2,30 @@
 #include<stdio.h>
 #include<graphics.h>
 
-void floodFill(int x, int y, int boundaryColor, int fillColor){
+void boundaryFill(int x, int y, int boundaryColor, int fillColor){
 
-    if( (getpixel(x, y)!= boundaryColor) && (getpixel(x ,y) != fillColor)){
+    if( (getpixel(x, y) != boundaryColor) && (getpixel(x ,y) != fillColor)){
         putpixel(x, y, fillColor);
-        floodFill(x+1, y, boundaryColor, fillColor);
-        floodFill(x, y+1, boundaryColor, fillColor);
-        floodFill(x-1, y, boundaryColor, fillColor);
-        floodFill(x, y-1, boundaryColor, fillColor);
+        boundaryFill(x+1, y, boundaryColor, fillColor);
+        boundaryFill(x, y+1, boundaryColor, fillColor);
+        boundaryFill(x-1, y, boundaryColor, fillColor);
+        boundaryFill(x, y-1, boundaryColor, fillColor);
     }
 }
 
 int main(){
     int gdriver=DETECT, gmode, left, top, bottom, right;
     
-    printf("Enter the left-top Coordinate:\n");
-    scanf("%d%d", &left, &top);
-    printf("Enter the right-bottom Coordinate:\n");
-    scanf("%d%d", &right, &bottom);
+    left = 200;
+    top = 200;
+    right = 300;
+    bottom = 300;
 
     initgraph(&gdriver, &gmode, "");
-    setbkcolor(WHITE);
+    //setbkcolor(WHITE);
     setcolor(BLUE);
     rectangle(left, top, right, bottom); 
-    floodFill(left+1, top+1, BLUE, GREEN);
+    boundaryFill(left+1, top+1, BLUE, GREEN);
     getch();
     closegraph();
     return 0;
