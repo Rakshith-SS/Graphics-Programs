@@ -15,11 +15,11 @@ void floodFill(int x, int y, int oldcolor, int newcolor){
 }
 int main(){
     int gdriver=DETECT, gmode, left, top, bottom, right;
-    
-    printf("Enter the left-top Coordinate:\n");
-    scanf("%d%d", &left, &top);
-    printf("Enter the right-bottom Coordinate:\n");
-    scanf("%d%d", &right, &bottom);
+
+    left = 100;
+    top = 100;
+    right = 200;
+    bottom = 200;  
 
     initgraph(&gdriver, &gmode, "");
     setbkcolor(WHITE);
